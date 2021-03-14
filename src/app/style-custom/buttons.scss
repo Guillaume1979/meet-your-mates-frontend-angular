@@ -1,0 +1,73 @@
+// ajouter des variables pour les couleurs afin de reprendre les couleurs globales du site
+
+// basic button
+button {
+  background-color: black;
+  color: aquamarine;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  outline: none;
+  border: 2px solid black;
+  box-shadow: 2px 2px 5px aquamarine, inset 0 0 2px aquamarine;
+}
+
+// slider button
+input[type="checkbox"].slider {
+  position: relative;
+  width: 120px;
+  height: 40px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: linear-gradient(0deg, #333, #000);
+  border-radius: 20px;
+  outline: none;
+  box-shadow: 0 0 0 4px grey, 0 0 0 5px dimgrey, inset 0 0 10px rgba(0, 0, 0, 1),
+  5px 5px 20px rgba(0, 0, 0, 0.5);
+  transition: .5s;
+}
+
+input[type="checkbox"].slider:checked {
+  background: aquamarine;
+  box-shadow: 0 0 2px aquamarine, 0 0 0 4px grey, 0 0 0 5px dimgrey, inset 0 0 10px rgba(0, 0, 0, 1),
+  5px 5px 20px rgba(0, 0, 0, 0.5);
+  transition: .5s;
+}
+
+input[type="checkbox"].slider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 40px;
+  background: linear-gradient(0deg, #000, #333);
+  border-radius: 20px;
+  box-shadow: 0 0 0 1px #333333;
+  transform: scale(.98,.96);
+  transition: .5s;
+}
+
+input[type="checkbox"]:checked.slider::before {
+  transform: translateX(40px);
+}
+
+input[type="checkbox"].slider::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 2px);
+  left: calc(55%);
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(0deg, #333, #000);
+  border-radius: 20px;
+  transition: .5s;
+}
+
+input[type="checkbox"]:checked.slider::after {
+  transform: translateX(40px);
+  background: aquamarine;
+  box-shadow: 0 0 5px aquamarine;
+}
