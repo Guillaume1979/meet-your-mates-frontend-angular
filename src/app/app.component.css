@@ -1,5 +1,33 @@
-.header {
-  display: block;
-  min-height: 100px;
+:host {
+  display: flex;
+  flex-direction: column;
+  /* height = 100% - la hauteur du header car il est en fixed */
+  height: calc(100% - 100px);
+}
 
+app-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+main {
+  position: relative;
+  top: 100px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  background: blueviolet;
+}
+
+.footer {
+  height: 100px;
+  display: flex;
+  background: #333333;
 }

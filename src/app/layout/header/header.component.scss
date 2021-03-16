@@ -1,20 +1,25 @@
-main {
+header {
   display: flex;
   flex-direction: column;
+  background: palevioletred;
 }
 
 .header-top {
   display: flex;
   justify-content: space-between;
+  height: 50px;
+}
+
+.header-bottom {
+  height: auto;
 }
 
 .header-bottom ul {
   display: flex;
   justify-content: space-between;
+  padding-left: 0;
 }
 
 .header-bottom li {
   list-style: none;
-  display: flex;
-
 }

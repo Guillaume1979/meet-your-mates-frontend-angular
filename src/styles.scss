@@ -1,7 +1,6 @@
 @import './app/style-custom/buttons.scss';
 
 html, body, ::after, ::before {
-  height: 100vh;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,7 +8,6 @@ html, body, ::after, ::before {
 
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
+  font-size: 16px;
+  height: 100vh;
 }
