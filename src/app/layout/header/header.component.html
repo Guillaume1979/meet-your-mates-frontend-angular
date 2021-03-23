@@ -1,25 +1,16 @@
-<header>
-  <section class="header-top">
-    <div class="logo">
-      <span>MEET YOUR MATES(logo)</span>
-      <a [routerLink]="['']">MEET YOUR MATES</a>
+<header class="header">
+  <div class="logo">
+    <span>MEET YOUR MATES(logo)</span>
+    <a [routerLink]="['']">MEET YOUR MATES</a>
+  </div>
+  <div>
+    <ng-template #login>
+      <div>Login</div>
+    </ng-template>
+    <div *ngIf="isAuthenticated else login">
+      Username
+      Avatar
+      Logout Bouton
     </div>
-    <div>
-      <ng-template #login>
-        <div>Login</div>
-      </ng-template>
-      <div *ngIf="isAuthenticated else login">
-        Username
-        Avatar
-        Logout Bouton
-      </div>
-    </div>
-  </section>
-  <nav class="header-bottom">
-    <ul>
-      <li>Mes sessions</li>
-      <li>Mes Guildes</li>
-      <li>Lien 3</li>
-    </ul>
-  </nav>
+  </div>
 </header>

@@ -1,6 +1,6 @@
-@import './app/style-custom/buttons.scss';
+@import 'style-custom/html-elements/buttons';
 
-html, body, ::after, ::before {
+*, ::after, ::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

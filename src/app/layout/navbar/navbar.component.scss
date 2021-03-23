@@ -1,0 +1,39 @@
+@import 'src/style-custom/variables/variables';
+
+.container {
+  position: relative;
+  top: $header-height;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - #{$header-height});
+}
+
+nav {
+  display: flex;
+  min-height: $navbar-height;
+  background: palevioletred;
+  padding: 5px 15px;
+}
+
+nav ul {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+nav ul li {
+  padding: 0 2vw;
+  list-style: none;
+}
+
+.content {
+  flex: 1;
+  background: aquamarine;
+}
+
+.footer {
+  height: $footer-height;
+  display: flex;
+  background: #333333;
+}

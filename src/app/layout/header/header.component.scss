@@ -1,25 +1,9 @@
-header {
+@import 'src/style-custom/variables/variables';
+
+.header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  height: $header-height;
   background: palevioletred;
-}
-
-.header-top {
-  display: flex;
-  justify-content: space-between;
-  height: 50px;
-}
-
-.header-bottom {
-  height: auto;
-}
-
-.header-bottom ul {
-  display: flex;
-  justify-content: space-between;
-  padding-left: 0;
-}
-
-.header-bottom li {
-  list-style: none;
+  padding: 15px;
 }

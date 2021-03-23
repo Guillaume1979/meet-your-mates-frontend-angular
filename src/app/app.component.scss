@@ -1,0 +1,14 @@
+@import 'src/style-custom/variables/variables.scss';
+app-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.footer {
+  position: relative;
+  height: $footer-height;
+  display: flex;
+  background: #333333;
+}
