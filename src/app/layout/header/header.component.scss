@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   height: $header-height;
-  background: palevioletred;
+  background: $header-bg-color;
   padding: 15px;
+  color: $font-accent;
 }

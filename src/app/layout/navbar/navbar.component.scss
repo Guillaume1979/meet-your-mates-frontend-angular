@@ -12,7 +12,8 @@
 nav {
   display: flex;
   min-height: $navbar-height;
-  background: palevioletred;
+  background: $header-bg-color;
+  color: $font-accent;
   padding: 5px 15px;
 }
 
@@ -29,11 +30,12 @@ nav ul li {
 
 .content {
   flex: 1;
-  background: aquamarine;
+  background: $primary;
 }
 
 .footer {
   height: $footer-height;
   display: flex;
-  background: #333333;
+  background: $footer-bg-color;
+  color: $font-accent;
 }
