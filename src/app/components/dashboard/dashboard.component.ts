@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ApiService} from '../../core/service/api.service';
+import {Player} from '../../core/model/player';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  players: Player[] = [];
+
+  constructor(private readonly apiService: ApiService) {
+  }
 
   ngOnInit(): void {
+
+    this.apiService.getPlayers().subscribe(
+      (data) => {
+        this.players = data;
+        console.log('players = ', this.players);
+      }
+    );
   }
 
 }

@@ -1,19 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from './layout/layout.module';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {CoreModule} from './core/core.module';
+import {SharedModule} from './shared/shared.module';
+import {DashboardModule} from './components/dashboard/dashboard.module';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    LayoutModule,
     AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

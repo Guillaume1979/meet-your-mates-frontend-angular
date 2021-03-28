@@ -1,4 +1,4 @@
-@import 'src/style-custom/variables/variables';
+@import '../../../../style-custom/variables/variables';
 
 .container {
   position: relative;
@@ -15,6 +15,8 @@ nav {
   background: $header-bg-color;
   color: $font-accent;
   padding: 5px 15px;
+  position: sticky;
+  top: $header-height;
 }
 
 nav ul {
