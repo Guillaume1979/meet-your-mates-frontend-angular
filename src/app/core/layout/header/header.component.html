@@ -4,10 +4,11 @@
     <a [routerLink]="['']">MEET YOUR MATES</a>
   </div>
   <div>
-    <ng-template #login>
+    <ng-template #loginZone>
       <div>Connexion + Logo Discord</div>
+      <button (click)="login()">Discord</button>
     </ng-template>
-    <div *ngIf="isAuthenticated else login">
+    <div *ngIf="isAuthenticated else loginZone">
       Username
       Avatar
       Logout Bouton
