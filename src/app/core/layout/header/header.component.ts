@@ -13,7 +13,17 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // login(): void {
+  //   this.authService.login().subscribe((token) => console.log(token));
+  // }
+
   login(): void {
-    this.authService.login().subscribe((token) => console.log(token));
+    console.log('login click');
+    this.authService.login();
+  }
+
+  logout(): void {
+    this.authService.logout();
+    console.log('déconnecté');
   }
 }

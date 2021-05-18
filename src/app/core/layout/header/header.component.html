@@ -7,6 +7,7 @@
     <ng-template #loginZone>
       <div>Connexion + Logo Discord</div>
       <button (click)="login()">Discord</button>
+      <button (click)="logout()">Déconnection</button>
     </ng-template>
     <div *ngIf="isAuthenticated else loginZone">
       Username
