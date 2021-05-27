@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
+import { Player } from '../model/player';
 
 export const authCodeFlowConfig: AuthConfig = {
   // issuer: 'https://discord.com',
@@ -14,6 +15,10 @@ export const authCodeFlowConfig: AuthConfig = {
   oidc: false,
   strictDiscoveryDocumentValidation: false,
 };
+
+interface JwtToken {
+  username: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -28,8 +33,8 @@ export class AuthService {
     this.oauthService.configure(authCodeFlowConfig);
     this.oauthService.tryLogin().then((r) => {
       console.log('token = ', window.sessionStorage.getItem('access_token'));
-
-      // user infos
+      this.setJwtToken();
+      /*// user infos
       const userInfo = this.http.get('https://discord.com/api/v8/users/@me', {
         headers: {
           Authorization: `Bearer ${window.sessionStorage.getItem(
@@ -51,11 +56,25 @@ export class AuthService {
         }
       );
       userGuilds.subscribe((res) => console.log('user guilds : ', res));
+    });*/
     });
   }
 
   login(): void {
     this.oauthService.initLoginFlow();
+  }
+
+  setJwtToken(): void {
+    const token = this.getJwtTokenFromBack().subscribe((jwtToken) => {
+      console.log('nom du joueur : ', jwtToken.username);
+      window.sessionStorage.setItem('mym_token', (jwtToken.username ??= ''));
+    });
+  }
+
+  getJwtTokenFromBack(): Observable<Player> {
+    return this.http.post<Player>(`${this.endpoint}`, {
+      access_token: `${window.sessionStorage.getItem('access_token')}`,
+    });
   }
 
   logout(): void {
