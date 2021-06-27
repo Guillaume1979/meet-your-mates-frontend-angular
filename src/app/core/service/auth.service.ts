@@ -17,7 +17,7 @@ export const authCodeFlowConfig: AuthConfig = {
 };
 
 interface JwtToken {
-  username: string;
+  mym_token: string;
 }
 
 @Injectable({
@@ -32,31 +32,7 @@ export class AuthService {
   ) {
     this.oauthService.configure(authCodeFlowConfig);
     this.oauthService.tryLogin().then((r) => {
-      console.log('token = ', window.sessionStorage.getItem('access_token'));
       this.setJwtToken();
-      /*// user infos
-      const userInfo = this.http.get('https://discord.com/api/v8/users/@me', {
-        headers: {
-          Authorization: `Bearer ${window.sessionStorage.getItem(
-            'access_token'
-          )}`,
-        },
-      });
-      userInfo.subscribe((res) => console.log('user info : ', res));
-
-      // user guilds
-      const userGuilds = this.http.get(
-        'https://discord.com/api/v8/users/@me/guilds',
-        {
-          headers: {
-            Authorization: `Bearer ${window.sessionStorage.getItem(
-              'access_token'
-            )}`,
-          },
-        }
-      );
-      userGuilds.subscribe((res) => console.log('user guilds : ', res));
-    });*/
     });
   }
 
@@ -66,13 +42,12 @@ export class AuthService {
 
   setJwtToken(): void {
     const token = this.getJwtTokenFromBack().subscribe((jwtToken) => {
-      console.log('nom du joueur : ', jwtToken.username);
-      window.sessionStorage.setItem('mym_token', (jwtToken.username ??= ''));
+      window.sessionStorage.setItem('mym_token', jwtToken.mym_token ?? '');
     });
   }
 
-  getJwtTokenFromBack(): Observable<Player> {
-    return this.http.post<Player>(`${this.endpoint}`, {
+  getJwtTokenFromBack(): Observable<JwtToken> {
+    return this.http.post<JwtToken>(`${this.endpoint}`, {
       access_token: `${window.sessionStorage.getItem('access_token')}`,
     });
   }
