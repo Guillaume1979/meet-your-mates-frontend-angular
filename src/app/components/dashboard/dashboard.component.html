@@ -3,3 +3,6 @@
 </div>
 <p>Taille du tableau : {{players.length}}</p>
 
+<div *ngIf="isAuthenticated">
+  <span>Le joueur s'appelle {{activePlayer.username}}</span>
+</div>

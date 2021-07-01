@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../core/service/api.service';
 import { Player } from '../../core/model/player';
+import { AuthService } from '../../core/service/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,12 @@ import { Player } from '../../core/model/player';
 })
 export class DashboardComponent implements OnInit {
   players: Player[] = [];
+  activePlayer = new Player();
 
-  constructor(private readonly apiService: ApiService) {}
+  constructor(
+    private readonly apiService: ApiService,
+    private authService: AuthService
+  ) {}
   // todo à remettre
   ngOnInit(): void {
     /*    this.apiService.getPlayers().subscribe(
@@ -19,5 +24,14 @@ export class DashboardComponent implements OnInit {
         console.log('players = ', this.players);
       }
     );*/
+    this.authService.activeUser$.subscribe(
+      (player) => (this.activePlayer = player)
+    );
+  }
+
+  get isAuthenticated(): boolean {
+    let userState = false;
+    this.authService.isAuthenticated$.subscribe((state) => (userState = state));
+    return userState;
   }
 }

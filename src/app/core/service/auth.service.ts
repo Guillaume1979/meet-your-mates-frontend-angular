@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
+import jwt_decode from 'jwt-decode';
 import { Player } from '../model/player';
 
 export const authCodeFlowConfig: AuthConfig = {
@@ -25,6 +26,11 @@ interface JwtToken {
 })
 export class AuthService {
   endpoint = 'http://localhost:3000/api/auth/login';
+  private activeUser = new BehaviorSubject<Player>(new Player());
+  activeUser$ = this.activeUser as Observable<Player>;
+
+  private isAuthenticated = new BehaviorSubject<boolean>(false);
+  isAuthenticated$ = this.isAuthenticated as Observable<boolean>;
 
   constructor(
     private readonly http: HttpClient,
@@ -40,19 +46,45 @@ export class AuthService {
     this.oauthService.initLoginFlow();
   }
 
-  setJwtToken(): void {
-    const token = this.getJwtTokenFromBack().subscribe((jwtToken) => {
+  logout(): void {
+    this.oauthService.logOut();
+    sessionStorage.removeItem('mym_token');
+    this.changeAuthenticationState();
+  }
+
+  getRawToken(): string {
+    return sessionStorage.getItem('mym_token') ?? '';
+  }
+
+  private setJwtToken(): void {
+    this.getJwtTokenFromBack().subscribe((jwtToken) => {
       window.sessionStorage.setItem('mym_token', jwtToken.mym_token ?? '');
+      this.getUserInfoFromToken();
+      this.changeAuthenticationState();
     });
   }
 
-  getJwtTokenFromBack(): Observable<JwtToken> {
+  private getJwtTokenFromBack(): Observable<JwtToken> {
     return this.http.post<JwtToken>(`${this.endpoint}`, {
       access_token: `${window.sessionStorage.getItem('access_token')}`,
     });
   }
 
-  logout(): void {
-    this.oauthService.logOut();
+  private changeAuthenticationState(): void {
+    this.isAuthenticated.next(!!sessionStorage.getItem('mym_token'));
+    // todo : à supprimer
+    console.log(!!sessionStorage.getItem('mym_token'));
+  }
+
+  private getUserInfoFromToken(): void {
+    if (this.isAuthenticated) {
+      // const rawToken = sessionStorage.getItem('mym_token') ?? '';
+      const decodedToken: Partial<Player> = jwt_decode(this.getRawToken());
+      this.activeUser.next(
+        new Player(decodedToken.id, decodedToken.username, decodedToken.role)
+      );
+    } else {
+      throw new Error('Joueur non identifié');
+    }
   }
 }

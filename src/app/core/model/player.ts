@@ -1,9 +1,7 @@
 export class Player {
-  // id!: number;
-  // username!: string;
   constructor(
-    public id: number | null,
+    public id?: number,
     public username: string = '',
-  ) {
-  }
+    public role: string = 'user'
+  ) {}
 }
