@@ -29,11 +29,13 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
     if (this.isAuthenticated) {
+      // todo : à supprimer
       console.log('toto est bien authentifié');
       return true;
     } else {
+      // todo : à supprimer
       console.log("toto n'est PAS authentifié");
-      this.router.navigate([]);
+      this.router.navigate(['redirect']);
       return false;
     }
   }

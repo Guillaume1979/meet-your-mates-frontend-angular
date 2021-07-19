@@ -4,9 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { RedirectComponent } from './components/redirect/redirect.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
+  { path: 'redirect', component: RedirectComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
