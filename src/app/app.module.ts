@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import {CoreModule} from './core/core.module';
 import {SharedModule} from './shared/shared.module';
 import {DashboardModule} from './components/dashboard/dashboard.module';
+import { WelcomeComponent } from './components/welcome/welcome.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, WelcomeComponent],
   imports: [
     AppRoutingModule,
     CoreModule,

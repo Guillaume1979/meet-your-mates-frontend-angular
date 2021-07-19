@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.authService.logout();
+    // todo : à supprimer
     console.log('déconnecté');
   }
 }
