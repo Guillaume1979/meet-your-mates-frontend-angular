@@ -1,5 +1,5 @@
-@import 'style-custom/html-elements/buttons';
-@import 'style-custom/variables/variables';
+@forward 'style-custom/html-elements/buttons';
+@use 'style-custom/variables/variables' as var;
 
 *, ::after, ::before {
   margin: 0;
@@ -8,8 +8,8 @@
 }
 
 body {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 16px;
-  color: $font-primary;
+  color: var.$font-primary;
   height: 100vh;
 }

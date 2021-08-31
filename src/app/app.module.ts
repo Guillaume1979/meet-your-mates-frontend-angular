@@ -10,6 +10,7 @@ import { RedirectComponent } from './components/redirect/redirect.component';
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent, RedirectComponent],
+  // todo : revoir les imports (sharedmodule et Dashboardmodule)
   imports: [AppRoutingModule, CoreModule, SharedModule, DashboardModule],
   providers: [],
   bootstrap: [AppComponent],

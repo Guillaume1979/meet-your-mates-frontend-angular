@@ -2,16 +2,18 @@
 
 // basic button
 button {
-  background-color: black;
-  color: aquamarine;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 2px;
-  padding: 5px 10px;
-  border-radius: 7px;
-  outline: none;
-  border: 2px solid black;
-  box-shadow: 2px 2px 5px aquamarine, inset 0 0 2px aquamarine;
+  &.basic1 {
+    background-color: black;
+    color: aquamarine;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 5px 10px;
+    border-radius: 7px;
+    outline: none;
+    border: 2px solid black;
+    box-shadow: 2px 2px 5px aquamarine, inset 0 0 2px aquamarine;
+  }
 }
 
 // slider button
@@ -46,7 +48,7 @@ input[type="checkbox"].slider::before {
   background: linear-gradient(0deg, #000, #333);
   border-radius: 20px;
   box-shadow: 0 0 0 1px #333333;
-  transform: scale(.98,.96);
+  transform: scale(.98, .96);
   transition: .5s;
 }
 
