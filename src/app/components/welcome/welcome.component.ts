@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { AuthService } from '../../core/service/auth.service';
 
 @Component({
   selector: 'app-welcome',
@@ -10,7 +11,11 @@ import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 export class WelcomeComponent implements OnInit {
   discord = faDiscord;
   exclamation = faExclamation;
-  constructor() {}
+  constructor(private readonly authService: AuthService) {}
 
   ngOnInit(): void {}
+
+  login(): void {
+    this.authService.login();
+  }
 }
