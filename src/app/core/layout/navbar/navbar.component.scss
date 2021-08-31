@@ -1,22 +1,22 @@
-@import '../../../../style-custom/variables/variables';
+@use '../../../../style-custom/variables/variables' as var;
 
 .container {
   position: relative;
-  top: $header-height;
+  top: var.$header-height;
   width: 100%;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - #{$header-height});
+  min-height: calc(100vh - #{var.$header-height});
 }
 
 nav {
   display: flex;
-  min-height: $navbar-height;
-  background: $header-bg-color;
-  color: $font-accent;
+  min-height: var.$navbar-height;
+  background: var.$header-bg-color;
+  color: var.$font-accent;
   padding: 5px 15px;
   position: sticky;
-  top: $header-height;
+  top: var.$header-height;
 }
 
 nav ul {
@@ -32,12 +32,12 @@ nav ul li {
 
 .content {
   flex: 1;
-  background: $primary;
+  background: var.$primary;
 }
 
 .footer {
-  height: $footer-height;
+  height: var.$footer-height;
   display: flex;
-  background: $footer-bg-color;
-  color: $font-accent;
+  background: var.$footer-bg-color;
+  color: var.$font-accent;
 }

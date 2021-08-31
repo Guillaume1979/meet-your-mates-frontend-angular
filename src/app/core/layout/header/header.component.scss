@@ -1,10 +1,10 @@
-@import '../../../../style-custom/variables/variables';
+@use '../../../../style-custom/variables/variables' as var;
 
 .header {
   display: flex;
   justify-content: space-between;
-  height: $header-height;
-  background: $header-bg-color;
+  height: var.$header-height;
+  background: var.$header-bg-color;
   padding: 15px;
-  color: $font-accent;
+  color: var.$font-accent;
 }
