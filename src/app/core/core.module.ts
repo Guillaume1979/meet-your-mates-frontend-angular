@@ -7,7 +7,6 @@ import { AuthService } from './service/auth.service';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { ErrorInterceptor } from './interceptor/error.interceptor';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [],
@@ -23,7 +22,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HttpClientModule,
     LayoutModule,
     OAuthModule,
-    FontAwesomeModule,
   ],
 })
 export class CoreModule {

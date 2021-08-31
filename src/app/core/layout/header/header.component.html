@@ -1,18 +1,16 @@
 <header class="header">
   <div class="logo">
-    <span>(logo)</span>
-    <a [routerLink]="['']">MEET YOUR MATES</a>
+    <a [routerLink]="['']"><fa-icon [icon]="gamepad"></fa-icon> MEET YOUR MATES <fa-icon [icon]="mouse"></fa-icon></a>
   </div>
   <div>
-    <ng-template #loginZone>
-      <div>Connexion + Logo Discord</div>
-      <button (click)="login()">Discord</button>
-      <button (click)="logout()">Déconnection</button>
-    </ng-template>
-    <div *ngIf="isAuthenticated else loginZone">
-      Username
+    <div *ngIf="isAuthenticated else toLogin">
+<!--       todo : à implémenter avec les données du joueur-->
       Avatar
-      Logout Bouton
+      Username
+      <button class="basic1" (click)="logout()"><fa-icon [icon]="disconnect"></fa-icon></button>
     </div>
+    <ng-template #toLogin>
+      <button class="basic1" (click)="login()">Login <fa-icon [icon]="discord"></fa-icon></button>
+    </ng-template>
   </div>
 </header>
