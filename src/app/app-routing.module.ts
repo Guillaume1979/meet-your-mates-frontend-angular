@@ -7,8 +7,9 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RedirectComponent } from './components/redirect/redirect.component';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent },
+  { path: '', component: WelcomeComponent, pathMatch: 'full' },
   { path: 'redirect', component: RedirectComponent },
+  { path: '**', redirectTo: '' },
   {
     path: 'dashboard',
     component: DashboardComponent,
