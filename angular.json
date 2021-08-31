@@ -30,6 +30,13 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/style-custom",
+                "src/style-custom/variables",
+                "src/style-custom/html-elements"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
