@@ -2,6 +2,7 @@
 
 // basic button
 button {
+  cursor: pointer;
   &.basic1 {
     background-color: black;
     color: aquamarine;
