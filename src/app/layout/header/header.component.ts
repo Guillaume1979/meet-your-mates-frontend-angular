@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../service/auth.service';
+import { AuthService } from '../../core/service/auth.service';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import {
   faGamepad,
@@ -7,7 +7,7 @@ import {
   faMouse,
   faPowerOff,
 } from '@fortawesome/free-solid-svg-icons';
-import { Player } from '../../model/player';
+import { Player } from '../../core/model/player';
 import { switchMap, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 

@@ -58,7 +58,7 @@ export class AuthService {
 
   private setJwtToken(): void {
     this.getJwtTokenFromBack().subscribe((jwtToken) => {
-      window.sessionStorage.setItem('mym_token', jwtToken.mym_token ?? '');
+      sessionStorage.setItem('mym_token', jwtToken.mym_token ?? '');
       this.getUserInfoFromToken();
       this.changeAuthenticationState();
     });
@@ -66,7 +66,7 @@ export class AuthService {
 
   private getJwtTokenFromBack(): Observable<JwtToken> {
     return this.http.post<JwtToken>(`${this.endpoint}`, {
-      access_token: `${window.sessionStorage.getItem('access_token')}`,
+      access_token: `${sessionStorage.getItem('access_token')}`,
     });
   }
 
@@ -78,7 +78,6 @@ export class AuthService {
 
   private getUserInfoFromToken(): void {
     if (this.isAuthenticated) {
-      // const rawToken = sessionStorage.getItem('mym_token') ?? '';
       const decodedToken: Partial<Player> = jwt_decode(this.getRawToken());
       this.activeUser.next(
         new Player(decodedToken.id, decodedToken.username, decodedToken.role)
