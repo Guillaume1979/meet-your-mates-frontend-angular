@@ -13,3 +13,7 @@
 
 
 <button class="basic1" (click)="login()">Rejoignez-nous <fa-icon [icon]="discord"></fa-icon></button>
+
+<button class="basic1" (click)="show('SUCCESS', 'ca marche !!!')">Succès</button>
+<button class="basic1" (click)="show('ERROR', 'Tu t\'es planté')">Erreur</button>
+<button class="basic1" (click)="show('WARN', 'ceci est un warning')">Avertissement</button>

@@ -6,8 +6,18 @@ import { SharedModule } from '../shared/shared.module';
 import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, NavbarComponent, NotificationComponent],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    NavbarComponent,
+    NotificationComponent,
+  ],
   imports: [SharedModule],
-  exports: [HeaderComponent, FooterComponent, NavbarComponent],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    NavbarComponent,
+    NotificationComponent,
+  ],
 })
 export class LayoutModule {}
