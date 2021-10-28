@@ -3,8 +3,19 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   height: var.$header-height;
   background: var.$header-bg-color;
   padding: 15px;
   color: var.$font-accent;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  a {
+    font-weight: bold;
+    font-style: italic;
+  }
 }

@@ -1,6 +1,7 @@
 <header class="header">
   <div class="logo">
-    <a [routerLink]="['']"><fa-icon [icon]="gamepad"></fa-icon> MEET YOUR MATES <fa-icon [icon]="mouse"></fa-icon></a>
+    <img src="assets/images/monters_cartoon.png" height="50">
+    <a [routerLink]="['']">MEET YOUR MATES</a>
   </div>
   <div>
     <div *ngIf="isAuthenticated else toLogin">
