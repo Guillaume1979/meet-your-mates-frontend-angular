@@ -6,7 +6,7 @@
   inset: 20px 20px auto auto;
   z-index: 10;
   border-radius: 5px;
-  box-shadow: 1px 1px 2px 1px black;
+  box-shadow: 1px 1px 2px 1px #534f4f;
   opacity: 0;
   transition: opacity 1.5s;
   pointer-events: none;
@@ -18,16 +18,16 @@
 }
 
 .success {
-  background: #519416;
+  background: #65923b;
   color: white;
 }
 
 .error {
-  background: #b63535;
+  background: #e73c3c;
   color: white;
 }
 
 .warn {
-  background: rgb(255, 115, 0);
+  background: rgb(252, 147, 60);
   color: black;
 }
