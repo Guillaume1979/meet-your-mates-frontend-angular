@@ -9,12 +9,12 @@ import { RedirectComponent } from './components/redirect/redirect.component';
 const routes: Routes = [
   { path: '', component: WelcomeComponent, pathMatch: 'full' },
   { path: 'redirect', component: RedirectComponent },
-  { path: '**', redirectTo: '' },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard], // todo : à remettre
   },
+  { path: '**', redirectTo: '' }, // A placer à la fin
 ];
 
 @NgModule({

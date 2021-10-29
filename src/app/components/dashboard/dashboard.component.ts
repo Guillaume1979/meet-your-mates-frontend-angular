@@ -27,6 +27,7 @@ export class DashboardComponent implements OnInit {
     this.authService.activeUser$.subscribe(
       (player) => (this.activePlayer = player)
     );
+    console.log('toto');
   }
 
   get isAuthenticated(): boolean {
