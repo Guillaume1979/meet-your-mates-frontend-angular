@@ -35,7 +35,6 @@ export class AuthGuard implements CanActivate, OnDestroy {
     if (this.isAuthenticated) {
       // todo : à supprimer
       console.log('toto est bien authentifié');
-      this.notifService.show('SUCCESS', 'Vous êtes bien authentifié');
       return true;
     } else {
       // todo : à supprimer

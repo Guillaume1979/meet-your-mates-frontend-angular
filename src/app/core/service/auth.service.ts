@@ -79,8 +79,15 @@ export class AuthService {
   private getUserInfoFromToken(): void {
     if (this.isAuthenticated) {
       const decodedToken: Partial<Player> = jwt_decode(this.getRawToken());
+      console.log(decodedToken);
       this.activeUser.next(
-        new Player(decodedToken.id, decodedToken.username, decodedToken.role)
+        new Player(
+          decodedToken.id,
+          decodedToken.username,
+          decodedToken.avatar,
+          decodedToken.role,
+          decodedToken.discordId
+        )
       );
     } else {
       throw new Error('Joueur non identifié');

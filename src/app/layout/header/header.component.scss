@@ -18,3 +18,12 @@
     align-items: center;
   }
 }
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+  img {
+    border-radius: 5px;
+  }
+}

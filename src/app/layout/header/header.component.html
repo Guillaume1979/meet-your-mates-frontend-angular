@@ -6,10 +6,9 @@
     </a>
   </div>
   <div>
-    <div *ngIf="isAuthenticated else toLogin">
-      <!--       todo : à implémenter avec les données du joueur-->
-      Avatar
-      Username
+    <div class="profile" *ngIf="isAuthenticated else toLogin">
+      <img src="https://cdn.discordapp.com/avatars/{{currentPlayer.discordId}}/{{currentPlayer.avatar}}" alt="avatar du joueur" width="25">
+      <span>{{currentPlayer.username}}</span>
       <button class="basic1" (click)="logout()">
         <fa-icon [icon]="disconnect"></fa-icon>
       </button>

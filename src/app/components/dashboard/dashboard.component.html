@@ -1,10 +1,5 @@
-<div *ngFor="let player of players">
-  <p>Player {{player.id}} : {{player.username}}</p>
+<div *ngIf="(isAuth  | async)">
+<!--  <span>Le joueur s'appelle {{activePlayer.username}} et son avatar est-->
+<!--    <img src="https://cdn.discordapp.com/avatars/{{activePlayer.discordId}}/{{activePlayer.avatar}}" alt="avatar du joueur" width="50"></span>-->
+  <span>Le jour s'appelle {{(activePlayer | async)?.username}} et son avatar est <img src="https://cdn.discordapp.com/avatars/{{(activePlayer | async)?.discordId}}/{{(activePlayer | async)?.avatar}}" alt="avatar du joueur" width="50"></span>
 </div>
-<p>Taille du tableau : {{players.length}}</p>
-
-<div *ngIf="isAuthenticated">
-  <span>Le joueur s'appelle {{activePlayer.username}}</span>
-</div>
-
-<p>dashboard works</p>
