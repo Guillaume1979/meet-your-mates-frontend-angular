@@ -11,11 +11,10 @@
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-
   a {
     font-weight: bold;
     font-style: italic;
+    display: flex;
+    align-items: center;
   }
 }
