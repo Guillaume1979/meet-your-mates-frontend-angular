@@ -1,9 +1,17 @@
+import { Session } from './session';
+import { Guild } from './guild';
+
 export class Player {
-  constructor(
-    public id?: number,
-    public username: string = '',
-    public avatar?: string,
-    public role: string = 'user',
-    public discordId: string = ''
-  ) {}
+  id = 0;
+  username = '';
+  avatar?: string;
+  role = 'user';
+  discordId = '';
+  age?: number;
+  guilds: Guild[] = [];
+  sessions: Session[] = [];
+
+  constructor(init?: Partial<Player>) {
+    Object.assign(this, init);
+  }
 }

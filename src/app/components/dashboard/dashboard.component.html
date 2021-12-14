@@ -1,5 +1,67 @@
-<div *ngIf="(isAuth  | async)">
-<!--  <span>Le joueur s'appelle {{activePlayer.username}} et son avatar est-->
-<!--    <img src="https://cdn.discordapp.com/avatars/{{activePlayer.discordId}}/{{activePlayer.avatar}}" alt="avatar du joueur" width="50"></span>-->
-  <span>Le jour s'appelle {{(activePlayer | async)?.username}} et son avatar est <img src="https://cdn.discordapp.com/avatars/{{(activePlayer | async)?.discordId}}/{{(activePlayer | async)?.avatar}}" alt="avatar du joueur" width="50"></span>
-</div>
+<section>
+  <!--  <div *ngIf="(isAuth  | async)">
+      &lt;!&ndash;  <span>Le joueur s'appelle {{activePlayer.username}} et son avatar est&ndash;&gt;
+      &lt;!&ndash;    <img src="https://cdn.discordapp.com/avatars/{{activePlayer.discordId}}/{{activePlayer.avatar}}" alt="avatar du joueur" width="50"></span>&ndash;&gt;
+      <span>Le joueur s'appelle {{(activePlayer | async)?.username}} et son avatar est <img
+        src="https://cdn.discordapp.com/avatars/{{(activePlayer | async)?.discordId}}/{{(activePlayer | async)?.avatar}}"
+        alt="avatar du joueur" width="50"></span>
+    </div>-->
+
+  <div>
+    <h2>Mes prochaines sessions</h2>
+
+    <ng-template #noSessionScheduled>
+      <p>Aucune session de prévue</p>
+    </ng-template>
+
+    <table *ngIf="player.sessions.length > 0; else noSessionScheduled">
+      <thead>
+      <th>#</th>
+      <th>Date</th>
+      <th>Heure</th>
+      <th>Jeu</th>
+      <th>Participants</th>
+      <th>Détail</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let session of player.sessions">
+        <td>{{session.id}}</td>
+        <td>{{session.date | date: 'dd/MM/yy'}}</td>
+        <td>{{session.date | date: 'HH:mm'}}</td>
+        <td>{{session.game.name}}</td>
+        <td>
+          <span *ngFor="let player of session.registeredPlayers">{{player.username}}<br></span>
+        </td>
+        <td>
+          <button>fleche</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h2>Mes Guildes</h2>
+    <table>
+      <thead>
+      <th>Logo</th>
+      <th>Nom</th>
+      <th>Nb de membres sur MyM</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let guild of player.guilds, let index = index">
+        <td>{{guild.icon}}</td>
+        <td>{{guild.name}}</td>
+        <td>{{guild.members.length}} membres</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <br><br><br>
+  mes 3 prochaines sessions -> lien vers le reste des sessions <br>
+  mes guildes -> mes favorites ? <br>
+
+  button "ajouter une session"<br>
+
+
+</section>

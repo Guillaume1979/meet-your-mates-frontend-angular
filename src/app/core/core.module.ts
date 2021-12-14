@@ -1,7 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayoutModule } from '../layout/layout.module';
 import { ApiService } from './service/api.service';
 import { AuthService } from './service/auth.service';
 import { OAuthModule } from 'angular-oauth2-oidc';
