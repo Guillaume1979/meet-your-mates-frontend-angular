@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import jwt_decode from 'jwt-decode';
 import { Player } from '../model/player';
+import { Router } from '@angular/router';
 
 export const authCodeFlowConfig: AuthConfig = {
   // issuer: 'https://discord.com',
@@ -34,12 +35,16 @@ export class AuthService {
 
   constructor(
     private readonly http: HttpClient,
-    private readonly oauthService: OAuthService
+    private readonly oauthService: OAuthService,
+    private readonly router: Router
   ) {
     this.oauthService.configure(authCodeFlowConfig);
     this.oauthService.tryLogin().then((r) => {
       this.setJwtToken();
     });
+    if (sessionStorage.getItem('mym_token')) {
+      this.isAuthenticated.next(true);
+    }
   }
 
   login(): void {
@@ -50,6 +55,7 @@ export class AuthService {
     this.oauthService.logOut();
     sessionStorage.removeItem('mym_token');
     this.changeAuthenticationState();
+    this.router.navigate(['']);
   }
 
   getRawToken(): string {
@@ -61,6 +67,7 @@ export class AuthService {
       sessionStorage.setItem('mym_token', jwtToken.mym_token ?? '');
       this.getUserInfoFromToken();
       this.changeAuthenticationState();
+      this.router.navigate(['dashboard']);
     });
   }
 

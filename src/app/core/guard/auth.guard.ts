@@ -1,12 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../service/auth.service';
 import { NotificationService } from '../../layout/notification/notification.service';
 
@@ -14,8 +8,8 @@ import { NotificationService } from '../../layout/notification/notification.serv
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, OnDestroy {
-  private isAuthenticated: any;
-  private isAuthenticatedSubscription?: Subscription;
+  private isAuthenticated!: boolean;
+  private isAuthenticatedSubscription!: Subscription;
 
   constructor(
     private readonly authService: AuthService,
@@ -28,10 +22,7 @@ export class AuthGuard implements CanActivate, OnDestroy {
       );
   }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
+  canActivate(route: ActivatedRouteSnapshot): boolean {
     if (this.isAuthenticated) {
       // todo : à supprimer
       console.log('toto est bien authentifié');
