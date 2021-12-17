@@ -7,12 +7,13 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RedirectComponent } from './components/redirect/redirect.component';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent, pathMatch: 'full' },
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: 'welcome', component: WelcomeComponent },
   { path: 'redirect', component: RedirectComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard], // todo : à remettre
+    canActivate: [AuthGuard],
   },
   { path: '**', redirectTo: '' }, // A placer à la fin
 ];
