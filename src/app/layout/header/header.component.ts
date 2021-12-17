@@ -26,6 +26,8 @@ export class HeaderComponent implements OnInit {
   isAuthenticated = false;
   currentPlayer = new Player();
 
+  link = '';
+
   triggerPlayerUpdate$ = new Subject();
 
   constructor(private readonly authService: AuthService) {}
@@ -34,6 +36,7 @@ export class HeaderComponent implements OnInit {
     this.authService.isAuthenticated$.subscribe((state) => {
       this.isAuthenticated = state;
       this.triggerPlayerUpdate$.next(state);
+      this.link = state ? 'dashboard' : '';
     });
 
     this.triggerPlayerUpdate$
