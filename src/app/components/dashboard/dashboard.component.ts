@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../../core/service/api.service';
 import { Player } from '../../core/model/player';
 import { AuthService } from '../../core/service/auth.service';
-import { Observable, Subscription } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { Observable, Subscription, throwError } from 'rxjs';
+import { catchError, switchMap, tap } from 'rxjs/operators';
 import { Guild } from '../../core/model/guild';
 
 @Component({
@@ -25,10 +25,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isAuth = this.authService.isAuthenticated$;
-
     this.sub.add(
       this.authService.activeUser$
-        .pipe(switchMap((p) => this.apiService.getPlayer(p.id)))
+        .pipe(
+          tap((p) => console.log('player subscribed : ', p)),
+          switchMap((p) => this.apiService.getPlayer(p.id)),
+          catchError((err) => throwError('HOUSTONNNNN'))
+        )
         .subscribe((player) => (this.player = player))
     );
   }

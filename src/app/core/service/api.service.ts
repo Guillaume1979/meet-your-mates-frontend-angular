@@ -22,12 +22,6 @@ export class ApiService {
     return this.http.get<Player>(`${this.endpoint}/players/${playerId}`);
   }
 
-  getNumberOfMembersByGuild(guildId: number): Observable<Guild> {
-    return this.http.get<Guild>(
-      `${this.endpoint}/guilds/countGuildMembers/${guildId}`
-    );
-  }
-
   getGuild(guildId: number): Observable<Guild> {
     return this.http.get<Guild>(`${this.endpoint}/guilds/${guildId}`);
   }

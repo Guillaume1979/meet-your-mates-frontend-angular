@@ -28,10 +28,10 @@ interface JwtToken {
 export class AuthService {
   endpoint = 'http://localhost:3000/api/auth/login';
   private activeUser = new BehaviorSubject<Player>(new Player());
-  activeUser$ = this.activeUser as Observable<Player>;
+  activeUser$ = this.activeUser.asObservable();
 
   private isAuthenticated = new BehaviorSubject<boolean>(false);
-  isAuthenticated$ = this.isAuthenticated as Observable<boolean>;
+  isAuthenticated$ = this.isAuthenticated.asObservable();
 
   constructor(
     private readonly http: HttpClient,
@@ -44,6 +44,7 @@ export class AuthService {
     });
     if (sessionStorage.getItem('mym_token')) {
       this.isAuthenticated.next(true);
+      this.getUserInfoFromToken();
     }
   }
 
@@ -86,16 +87,14 @@ export class AuthService {
   private getUserInfoFromToken(): void {
     if (this.isAuthenticated) {
       const decodedToken: Partial<Player> = jwt_decode(this.getRawToken());
-      console.log(decodedToken);
-      this.activeUser.next(
-        new Player({
-          id: decodedToken.id,
-          username: decodedToken.username,
-          avatar: decodedToken.avatar,
-          role: decodedToken.role,
-          discordId: decodedToken.discordId,
-        })
-      );
+      console.log('decoded Token : ', decodedToken);
+      this.activeUser.next({
+        id: decodedToken.id,
+        username: decodedToken.username,
+        avatar: decodedToken.avatar,
+        role: decodedToken.role,
+        discordId: decodedToken.discordId,
+      } as Player);
     } else {
       throw new Error('Joueur non identifié');
     }
