@@ -33,10 +33,13 @@
           <span *ngFor="let player of session.registeredPlayers">{{player.username}}<br></span>
         </td>
         <td>
-          <button>fleche</button>
+          <a [routerLink]="['/session', session.id]">Détail de la session</a>
         </td>
       </tr>
       </tbody>
+      <tfoot>
+      <a [routerLink]="['/session/edit']">Créer une session</a>
+      <a [routerLink]="['/session']">Toutes mes sessions</a></tfoot>
     </table>
   </div>
   <div>
@@ -56,12 +59,5 @@
       </tbody>
     </table>
   </div>
-
-  <br><br><br>
-  mes 3 prochaines sessions -> lien vers le reste des sessions <br>
-  mes guildes -> mes favorites ? <br>
-
-  button "ajouter une session"<br>
-
 
 </section>

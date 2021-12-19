@@ -7,7 +7,9 @@ import { SharedModule } from './shared/shared.module';
 import { DashboardModule } from './components/dashboard/dashboard.module';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { RedirectComponent } from './components/redirect/redirect.component';
-import {LayoutModule} from './layout/layout.module';
+import { LayoutModule } from './layout/layout.module';
+import { SessionListComponent } from './components/session/session-list/session-list.component';
+import { SessionModule } from './components/session/session.module';
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent, RedirectComponent],
@@ -18,6 +20,7 @@ import {LayoutModule} from './layout/layout.module';
     SharedModule,
     DashboardModule,
     LayoutModule,
+    SessionModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

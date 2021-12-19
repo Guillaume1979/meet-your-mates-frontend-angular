@@ -1,7 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ApiService } from './service/api.service';
+import { DashboardService } from './service/dashboard.service';
 import { AuthService } from './service/auth.service';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
@@ -11,7 +11,7 @@ import { ErrorInterceptor } from './interceptor/error.interceptor';
   declarations: [],
   imports: [OAuthModule.forRoot()],
   providers: [
-    ApiService,
+    DashboardService,
     AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

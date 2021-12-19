@@ -15,6 +15,14 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'session',
+    loadChildren: () =>
+      import('./components/session/session.module').then(
+        (m) => m.SessionModule
+      ),
+    canActivate: [AuthGuard],
+  },
   { path: '**', redirectTo: '' }, // A placer à la fin
 ];
 

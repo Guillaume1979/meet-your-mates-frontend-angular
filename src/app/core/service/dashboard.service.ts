@@ -7,7 +7,7 @@ import { Guild } from '../model/guild';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
+export class DashboardService {
   endpoint = 'http://localhost:3000/api';
 
   constructor(private readonly http: HttpClient) {}
