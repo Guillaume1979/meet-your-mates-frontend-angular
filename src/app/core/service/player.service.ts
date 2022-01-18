@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Player } from '../model/player';
-import { Guild } from '../model/guild';
+import { endpoint } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DashboardService {
-  endpoint = 'http://localhost:3000/api';
+export class PlayerService {
+  // endpoint = 'http://localhost:3000/api'; // todo à supprimer
 
   constructor(private readonly http: HttpClient) {}
 
@@ -19,10 +19,6 @@ export class DashboardService {
   }
 
   getPlayer(playerId: number): Observable<Player> {
-    return this.http.get<Player>(`${this.endpoint}/players/${playerId}`);
-  }
-
-  getGuild(guildId: number): Observable<Guild> {
-    return this.http.get<Guild>(`${this.endpoint}/guilds/${guildId}`);
+    return this.http.get<Player>(`${endpoint}/players/${playerId}`);
   }
 }

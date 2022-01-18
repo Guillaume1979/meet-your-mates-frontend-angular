@@ -5,7 +5,7 @@ export class Player {
   id = 0;
   username = '';
   avatar?: string;
-  role = 'user';
+  roles = ['user'];
   discordId = '';
   age?: number;
   guilds: Guild[] = [];

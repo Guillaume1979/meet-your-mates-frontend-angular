@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { DashboardService } from '../../core/service/dashboard.service';
+import { PlayerService } from '../../core/service/player.service';
 import { SharedModule } from '../../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
   declarations: [DashboardComponent],
   imports: [SharedModule],
-  providers: [DashboardService],
+  providers: [PlayerService],
 })
 export class DashboardModule {}

@@ -55,7 +55,7 @@ export class AuthService {
   logout(): void {
     this.oauthService.logOut();
     sessionStorage.removeItem('mym_token');
-    this.changeAuthenticationState();
+    this.updateAuthenticationState();
     this.router.navigate(['']);
   }
 
@@ -67,7 +67,7 @@ export class AuthService {
     this.getJwtTokenFromBack().subscribe((jwtToken) => {
       sessionStorage.setItem('mym_token', jwtToken.mym_token ?? '');
       this.getUserInfoFromToken();
-      this.changeAuthenticationState();
+      this.updateAuthenticationState();
       this.router.navigate(['dashboard']);
     });
   }
@@ -78,7 +78,7 @@ export class AuthService {
     });
   }
 
-  private changeAuthenticationState(): void {
+  private updateAuthenticationState(): void {
     this.isAuthenticated.next(!!sessionStorage.getItem('mym_token'));
     // todo : à supprimer
     console.log(!!sessionStorage.getItem('mym_token'));
@@ -88,11 +88,13 @@ export class AuthService {
     if (this.isAuthenticated) {
       const decodedToken: Partial<Player> = jwt_decode(this.getRawToken());
       console.log('decoded Token : ', decodedToken);
+      const roles: string[] = [];
+      decodedToken.roles?.forEach((role) => roles.push(role));
       this.activeUser.next({
         id: decodedToken.id,
         username: decodedToken.username,
         avatar: decodedToken.avatar,
-        role: decodedToken.role,
+        roles, // short write for -> "roles: roles" (ts-lint)
         discordId: decodedToken.discordId,
       } as Player);
     } else {

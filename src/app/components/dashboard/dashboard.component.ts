@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DashboardService } from '../../core/service/dashboard.service';
+import { PlayerService } from '../../core/service/player.service';
 import { Player } from '../../core/model/player';
 import { AuthService } from '../../core/service/auth.service';
 import { Observable, Subscription, throwError } from 'rxjs';
@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   sub = new Subscription();
 
   constructor(
-    private readonly apiService: DashboardService,
+    private readonly playerService: PlayerService,
     private readonly authService: AuthService
   ) {}
 
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.isAuth = this.authService.isAuthenticated$;
     this.sub.add(
       this.authService.activeUser$
-        .pipe(switchMap((p) => this.apiService.getPlayer(p.id)))
+        .pipe(switchMap((p) => this.playerService.getPlayer(p.id)))
         .subscribe((player) => (this.player = player))
     );
   }
