@@ -1,5 +1,10 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../service/auth.service';
 import { NotificationService } from '../../layout/notification/notification.service';
@@ -25,11 +30,11 @@ export class AuthGuard implements CanActivate, OnDestroy {
   canActivate(route: ActivatedRouteSnapshot): boolean {
     if (this.isAuthenticated) {
       // todo : à supprimer
-      console.log('toto est bien authentifié');
+      console.log('Le joueur est bien authentifié');
       return true;
     } else {
       // todo : à supprimer
-      console.log("toto n'est PAS authentifié");
+      console.log("Le visiteur n'est pas authentifié");
       this.notifService.show('ERROR', "Vous n'êtes pas authentifié");
       this.router.navigate(['redirect']);
       return false;

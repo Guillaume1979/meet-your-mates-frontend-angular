@@ -4,7 +4,6 @@ import { Player } from '../../core/model/player';
 import { AuthService } from '../../core/service/auth.service';
 import { Observable, Subscription, throwError } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
-import { Guild } from '../../core/model/guild';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +12,7 @@ import { Guild } from '../../core/model/guild';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   activePlayer = new Player();
-  isAuth = new Observable<boolean>();
+  isAuth!: Observable<boolean>;
   player = new Player();
 
   sub = new Subscription();

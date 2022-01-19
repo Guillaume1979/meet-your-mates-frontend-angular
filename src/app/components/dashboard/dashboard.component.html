@@ -1,13 +1,9 @@
 <section>
   <!--  <div *ngIf="(isAuth  | async)">
-      &lt;!&ndash;  <span>Le joueur s'appelle {{activePlayer.username}} et son avatar est&ndash;&gt;
-      &lt;!&ndash;    <img src="https://cdn.discordapp.com/avatars/{{activePlayer.discordId}}/{{activePlayer.avatar}}" alt="avatar du joueur" width="50"></span>&ndash;&gt;
-      <span>Le joueur s'appelle {{(activePlayer | async)?.username}} et son avatar est <img
-        src="https://cdn.discordapp.com/avatars/{{(activePlayer | async)?.discordId}}/{{(activePlayer | async)?.avatar}}"
-        alt="avatar du joueur" width="50"></span>
+
     </div>-->
 
-  <div>
+  <div *ngIf="(isAuth  | async)">
     <h2>Mes prochaines sessions</h2>
 
     <ng-template #noSessionScheduled>
@@ -30,7 +26,7 @@
         <td>{{session.date | date: 'HH:mm'}}</td>
         <td>{{session.game.name}}</td>
         <td>
-          <span *ngFor="let player of session.registeredPlayers">{{player.username}}<br></span>
+          <span *ngFor="let player of session.registeredPlayers">{{player.username}}</span>
         </td>
         <td>
           <a [routerLink]="['/session', session.id]">Détail de la session</a>

@@ -1,1 +1,29 @@
-<p>session-list works!</p>
+<section>
+  <h2>Mes Sessions</h2>
+  <table>
+    <thead>
+    <th>#</th>
+    <th>Date</th>
+    <th>Heure</th>
+    <th>Jeu</th>
+    <th>Participants</th>
+    <th>Détail de la session</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let session of sessions | async">
+      <td>{{session.id}}</td>
+      <td>{{session.date | date: 'dd/MM/yy'}}</td>
+      <td>{{session.date | date: 'HH:mm'}}</td>
+      <td>{{session.game.name}}</td>
+      <td><span *ngFor="let player of session.registeredPlayers">{{player.username}}</span></td>
+      <td><a [routerLink]="['/session', session.id]">Bouton</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <p style="color: red"><strong>Prévoir l'ouverture du détail dans une popup</strong></p>
+</section>
