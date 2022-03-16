@@ -1,0 +1,64 @@
+section {
+
+}
+
+.next-sessions table {
+  td {
+    text-align: center;
+
+    & > span {
+      border-radius: 150px;
+      background-color: #895858;
+      padding: 8px;
+    }
+  }
+}
+
+.next-sessions, .my-guilds {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  align-items: center;
+}
+
+.next-sessions {
+  th:nth-child(1) {
+    width: 50px;
+  }
+}
+
+.registered-player {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3em;
+  align-items: center;
+
+  img {
+    width: 25px;
+    border-radius: 50%;
+  }
+}
+
+.my-guilds {
+  img {
+    width: 40px;
+    border-radius: 5px;
+  }
+
+  th:nth-child(1) {
+    width: 50px;
+  }
+
+  th:nth-child(2) {
+    width: 300px;
+  }
+
+  th:nth-child(3) {
+    width: 150px;
+  }
+
+  tr > td:nth-child(3) {
+    text-align: center;
+  }
+}

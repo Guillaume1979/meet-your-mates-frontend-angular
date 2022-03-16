@@ -1,19 +1,19 @@
-// ajouter des variables pour les couleurs afin de reprendre les couleurs globales du site
+@use "variables" as var;
 
 // basic button
 button {
   cursor: pointer;
   &.basic1 {
-    background-color: black;
-    color: aquamarine;
+    background-color: var.$primary;
+    color: var.$accent;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
     padding: 5px 10px;
     border-radius: 7px;
     outline: none;
-    border: 2px solid black;
-    box-shadow: 2px 2px 5px aquamarine, inset 0 0 2px aquamarine;
+    border: 2px solid var.$primary;
+    box-shadow: 2px 2px 5px var.$primary, inset 0 0 2px aquamarine;
   }
 }
 
@@ -33,8 +33,8 @@ input[type="checkbox"].slider {
 }
 
 input[type="checkbox"].slider:checked {
-  background: aquamarine;
-  box-shadow: 0 0 2px aquamarine, 0 0 0 4px grey, 0 0 0 5px dimgrey, inset 0 0 10px rgba(0, 0, 0, 1),
+  background: var.$primary;
+  box-shadow: 0 0 2px var.$primary, 0 0 0 4px grey, 0 0 0 5px dimgrey, inset 0 0 10px rgba(0, 0, 0, 1),
   5px 5px 20px rgba(0, 0, 0, 0.5);
   transition: .5s;
 }
@@ -71,6 +71,6 @@ input[type="checkbox"].slider::after {
 
 input[type="checkbox"]:checked.slider::after {
   transform: translateX(40px);
-  background: aquamarine;
-  box-shadow: 0 0 5px aquamarine;
+  background: var.$primary;
+  box-shadow: 0 0 5px var.$primary;
 }

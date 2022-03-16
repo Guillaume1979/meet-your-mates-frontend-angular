@@ -1,56 +1,66 @@
-<section>
-  <!--  <div *ngIf="(isAuth  | async)">
-
-    </div>-->
-
-  <div *ngIf="(isAuth  | async)">
+<section class="generic--section">
+  <div class="next-sessions">
     <h2>Mes prochaines sessions</h2>
 
     <ng-template #noSessionScheduled>
       <p>Aucune session de prévue</p>
     </ng-template>
 
-    <table *ngIf="player.sessions.length > 0; else noSessionScheduled">
-      <thead>
-      <th>#</th>
-      <th>Date</th>
-      <th>Heure</th>
-      <th>Jeu</th>
-      <th>Participants</th>
-      <th>Détail</th>
-      </thead>
-      <tbody>
-      <tr *ngFor="let session of player.sessions">
-        <td>{{session.id}}</td>
-        <td>{{session.date | date: 'dd/MM/yy'}}</td>
-        <td>{{session.date | date: 'HH:mm'}}</td>
-        <td>{{session.game.name}}</td>
-        <td>
-          <span *ngFor="let player of session.registeredPlayers">{{player.username}}</span>
-        </td>
-        <td>
-          <a [routerLink]="['/session', session.id]">Détail de la session</a>
-        </td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <a [routerLink]="['/session/edit']">Créer une session</a>
-      <a [routerLink]="['/session']">Toutes mes sessions</a></tfoot>
-    </table>
+    <div>
+      <table *ngIf="player.sessions.length > 0; else noSessionScheduled">
+        <thead>
+        <th>#</th>
+        <th>Date</th>
+        <th>Heure</th>
+        <th>Jeu</th>
+        <th>Participants</th>
+        <th>Détail</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let session of player.sessions">
+          <td><span>{{session.id}}</span></td>
+          <td>{{session.date | date: 'dd/MM/yy'}}</td>
+          <td>{{session.date | date: 'HH:mm'}}</td>
+          <td>{{session.game.name}}</td>
+          <td>
+            <div *ngFor="let player of session.registeredPlayers" class="registered-player">
+              <img *ngIf="player.avatar else avatarPlaceholder"
+                   src="https://cdn.discordapp.com/avatars/{{player.discordId}}/{{player.avatar}}"
+                   alt="avatar du joueur">
+              <span>{{player.username}}</span>
+              <ng-template #avatarPlaceholder>
+                <img src="assets/images/default_user.png" alt="avatar par défault">
+              </ng-template>
+            </div>
+          </td>
+          <td>
+            <a [routerLink]="['/session', session.id]">Détail de la session</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="generic--table-footer">
+        <a [routerLink]="['/session/edit']">Créer une session</a>
+        <a [routerLink]="['/session']">Toutes mes sessions</a>
+      </div>
+    </div>
+
   </div>
-  <div>
+  <div class="my-guilds">
     <h2>Mes Guildes</h2>
     <table>
       <thead>
       <th>Logo</th>
       <th>Nom</th>
-      <th>Nb de membres sur MyM</th>
+      <th>Nb de membres<br>sur MyM</th>
       </thead>
       <tbody>
       <tr *ngFor="let guild of player.guilds, let index = index">
-        <td>{{guild.icon}}</td>
+        <td><img *ngIf="guild.icon else defaultGuildIcon"
+                 src="https://cdn.discordapp.com/icons/{{guild.discordId}}/{{guild.icon}}" alt="Icône de Guilde"></td>
+        <ng-template #defaultGuildIcon><img src="assets/images/group_icon.png" alt="Icône de Guilde"></ng-template>
         <td>{{guild.name}}</td>
-        <td>{{guild.members.length}} membres</td>
+        <td><strong>{{guild.members.length}}</strong> membre(s)</td>
       </tr>
       </tbody>
     </table>

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PlayerService } from '../../core/service/player.service';
 import { Player } from '../../core/model/player';
 import { AuthService } from '../../core/service/auth.service';
-import { Observable, Subscription, throwError } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
 
 @Component({
@@ -12,7 +12,6 @@ import { catchError, switchMap, tap } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   activePlayer = new Player();
-  isAuth!: Observable<boolean>;
   player = new Player();
 
   sub = new Subscription();
@@ -23,7 +22,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.isAuth = this.authService.isAuthenticated$;
     this.sub.add(
       this.authService.activeUser$
         .pipe(switchMap((p) => this.playerService.getPlayer(p.id)))

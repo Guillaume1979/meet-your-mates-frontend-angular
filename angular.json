@@ -36,7 +36,8 @@
               "includePaths": [
                 "src/style-custom",
                 "src/style-custom/variables",
-                "src/style-custom/html-elements"
+                "src/style-custom/html-elements",
+                "src/style-custom/generic-style"
               ]
             },
             "scripts": []

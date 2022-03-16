@@ -5,6 +5,7 @@ import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import jwt_decode from 'jwt-decode';
 import { Player } from '../model/player';
 import { Router } from '@angular/router';
+import { root } from '../../../environments/environment';
 
 export const authCodeFlowConfig: AuthConfig = {
   // issuer: 'https://discord.com',
@@ -26,7 +27,7 @@ interface JwtToken {
   providedIn: 'root',
 })
 export class AuthService {
-  endpoint = 'http://localhost:3000/api/auth/login';
+  endpoint = `${root}/auth/login`;
   private activeUser = new BehaviorSubject<Player>(new Player());
   activeUser$ = this.activeUser.asObservable();
 
@@ -80,8 +81,6 @@ export class AuthService {
 
   private updateAuthenticationState(): void {
     this.isAuthenticated.next(!!sessionStorage.getItem('mym_token'));
-    // todo : à supprimer
-    console.log('Token présent : ', !!sessionStorage.getItem('mym_token'));
   }
 
   private getUserInfoFromToken(): void {
