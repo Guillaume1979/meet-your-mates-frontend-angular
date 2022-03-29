@@ -55,7 +55,7 @@
       <th>Nb de membres<br>sur MyM</th>
       </thead>
       <tbody>
-      <tr *ngFor="let guild of player.guilds, let index = index">
+      <tr *ngFor="let guild of player.guilds">
         <td><img *ngIf="guild.icon else defaultGuildIcon"
                  src="https://cdn.discordapp.com/icons/{{guild.discordId}}/{{guild.icon}}" alt="Icône de Guilde"></td>
         <ng-template #defaultGuildIcon><img src="assets/images/group_icon.png" alt="Icône de Guilde"></ng-template>

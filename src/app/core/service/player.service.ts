@@ -19,4 +19,10 @@ export class PlayerService {
   getPlayer(playerId: number): Observable<Player> {
     return this.http.get<Player>(`${root}/players/${playerId}`);
   }
+
+  getDashboardData(numberOfSessions: number): Observable<Player> {
+    return this.http.get<Player>(
+      `${root}/players/dashboard/${numberOfSessions}`
+    );
+  }
 }

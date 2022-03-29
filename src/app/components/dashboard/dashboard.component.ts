@@ -4,6 +4,8 @@ import { Player } from '../../core/model/player';
 import { AuthService } from '../../core/service/auth.service';
 import { Observable, Subscription } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
+import { SessionService } from '../../core/service/session.service';
+import { Session } from '../../core/model/session';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,9 +13,7 @@ import { catchError, switchMap, tap } from 'rxjs/operators';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  activePlayer = new Player();
   player = new Player();
-
   sub = new Subscription();
 
   constructor(
@@ -24,7 +24,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sub.add(
       this.authService.activeUser$
-        .pipe(switchMap((p) => this.playerService.getPlayer(p.id)))
+        .pipe(
+          switchMap((player) => this.playerService.getDashboardData(3)),
+          tap((p) => console.warn(p)) //todo: à virer
+        )
         .subscribe((player) => (this.player = player))
     );
   }
