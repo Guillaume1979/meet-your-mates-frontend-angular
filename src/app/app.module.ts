@@ -13,15 +13,7 @@ import { SessionModule } from './components/session/session.module';
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent, RedirectComponent],
-  // todo : revoir les imports (sharedmodule et Dashboardmodule)
-  imports: [
-    AppRoutingModule,
-    CoreModule,
-    SharedModule,
-    DashboardModule,
-    LayoutModule,
-    SessionModule,
-  ],
+  imports: [AppRoutingModule, CoreModule, SharedModule, LayoutModule],
   providers: [],
   bootstrap: [AppComponent],
 })

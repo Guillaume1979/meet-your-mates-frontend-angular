@@ -4,8 +4,6 @@ import { Player } from '../../core/model/player';
 import { AuthService } from '../../core/service/auth.service';
 import { Observable, Subscription } from 'rxjs';
 import { catchError, switchMap, tap } from 'rxjs/operators';
-import { SessionService } from '../../core/service/session.service';
-import { Session } from '../../core/model/session';
 
 @Component({
   selector: 'app-dashboard',

@@ -12,7 +12,11 @@ const routes: Routes = [
   { path: 'redirect', component: RedirectComponent },
   {
     path: 'dashboard',
-    component: DashboardComponent,
+    loadChildren: () =>
+      import('./components/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+    // component: DashboardComponent,
     canActivate: [AuthGuard],
   },
   {
