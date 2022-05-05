@@ -41,20 +41,17 @@ export class NotificationComponent implements OnInit, OnDestroy {
   }
 
   private loadCSSClasses(type: TypeOfNotification): void {
+    this.isSuccess = false;
+    this.isError = false;
+    this.isWarn = false;
     switch (type) {
       case 'SUCCESS':
         this.isSuccess = true;
-        this.isError = false;
-        this.isWarn = false;
         break;
       case 'ERROR':
-        this.isSuccess = false;
         this.isError = true;
-        this.isWarn = false;
         break;
       case 'WARN':
-        this.isSuccess = false;
-        this.isError = false;
         this.isWarn = true;
         break;
     }

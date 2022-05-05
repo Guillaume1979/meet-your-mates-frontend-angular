@@ -1,10 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../service/auth.service';
 import { NotificationService } from '../../layout/notification/notification.service';
@@ -13,7 +8,7 @@ import { NotificationService } from '../../layout/notification/notification.serv
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, OnDestroy {
-  private isAuthenticated!: boolean;
+  private isAuthenticated = false;
   private isAuthenticatedSubscription!: Subscription;
 
   constructor(
