@@ -1,13 +1,17 @@
 <section>
   <h2>Mes Sessions</h2>
+  <button>Créer une session</button>
   <table>
     <thead>
-    <th>#</th>
-    <th>Date</th>
-    <th>Heure</th>
-    <th>Jeu</th>
-    <th>Participants</th>
-    <th>Détail de la session</th>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Heure</th>
+      <th>Jeu</th>
+      <th>Participants</th>
+      <th>Détail de la session</th>
+    </tr>
+
     </thead>
     <tbody>
     <tr *ngFor="let session of sessions | async">
