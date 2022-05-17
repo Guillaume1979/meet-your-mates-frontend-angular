@@ -1,0 +1,12 @@
+img {
+
+  &.avatar {
+    width: 25px;
+    border-radius: 50%;
+  }
+
+  &.guild-icon {
+    width: 25px;
+    border-radius: 5px;
+  }
+}
