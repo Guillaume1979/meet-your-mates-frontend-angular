@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Player } from '../model/player';
 import { root } from '../../../environments/environment';
+import { Session } from '../model/session';
 
 @Injectable({
   providedIn: 'root',
@@ -24,5 +25,11 @@ export class PlayerService {
     return this.http.get<Player>(
       `${root}/players/dashboard/${numberOfSessions}`
     );
+  }
+
+  getSessions(): Observable<Session[]> {
+    return this.http
+      .get<Player>(`${root}/players/sessions`)
+      .pipe(map((player) => player.sessions));
   }
 }
