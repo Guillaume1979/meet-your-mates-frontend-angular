@@ -24,13 +24,8 @@
           <td>{{session.game.name}}</td>
           <td>
             <div *ngFor="let player of session.registeredPlayers" class="registered-player">
-              <img *ngIf="player.avatar else avatarPlaceholder"
-                   src="https://cdn.discordapp.com/avatars/{{player.discordId}}/{{player.avatar}}"
-                   alt="avatar du joueur">
+              <img class="avatar" src="{{player | avatar}}" alt="avatar du joueur">
               <span>{{player.username}}</span>
-              <ng-template #avatarPlaceholder>
-                <img src="assets/images/default_user.png" alt="avatar par défault">
-              </ng-template>
             </div>
           </td>
           <td>
@@ -56,9 +51,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let guild of player.guilds">
-        <td><img *ngIf="guild.icon else defaultGuildIcon"
-                 src="https://cdn.discordapp.com/icons/{{guild.discordId}}/{{guild.icon}}" alt="Icône de Guilde"></td>
-        <ng-template #defaultGuildIcon><img src="assets/images/group_icon.png" alt="Icône de Guilde"></ng-template>
+        <td><img class="guild-icon" src="{{guild | avatar}}" alt="Icône de Guilde"></td>
         <td>{{guild.name}}</td>
         <td><strong>{{guild.members.length}}</strong> membre(s)</td>
       </tr>
