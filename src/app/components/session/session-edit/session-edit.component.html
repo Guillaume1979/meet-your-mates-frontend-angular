@@ -1,15 +1,46 @@
 <section>
   <h2>Créer une session</h2>
   <h2>Modifier une session</h2>
-  <form>
-    Date
-    Heure
-    Jeu
-    Nb de participants min
-    Nb de participants max
+  <form [formGroup]="sessionForm">
+    <label for="date">Date</label>
+    <input id="date" type="date" formControlName="date">
+
+    <label for="time">Heure</label>
+    <input id="time" type="time" formControlName="time">
+
+    <label for="game">Jeu</label>
+    <input id="game" formControlName="game">
+
+    <label for="owner">Organisateur</label>
+    <input id="owner" formControlName="owner">
+
+    <label for="player-min">Nombre de participants min</label>
+    <!--    todo: ajouter un + et un - de chaque côté du champ pour permettre d'ajuster facilement le nombre de joueurs-->
+    <input id="player-min" formControlName="gamersMin">
+
+    <!--    Revoir comment insérer un tableau de joueur-->
+    <label for="player-max">Nombre de participants max</label>
+    <!--    todo: ajouter un + et un - de chaque côté du champ pour permettre d'ajuster facilement le nombre de joueurs-->
+    <input id="player-max" formControlName="gamersMax">
+
+    <label for="registeredPlayers">Participants</label>
+    <ul id="registeredPlayers">
+      <!--      todo: créer un pipe pour récupérer l'image des avatars-->
+      <li *ngFor="let player of session.registeredPlayers">
+        <img class="avatar" src="{{player | avatar}}" alt="avatar du joueur"><span>{{player.username}}</span></li>
+    </ul>
+
+    <br>
     Liste d'attente (pour les participants au-delà du nb max)
     <!--(pour l'édition uniquement)-->
     Propriétaire de la session (celui qui l'a créé)
     Valideurs de la session (le propriétaire doit pouvoir en ajouter)
   </form>
+
+  <!--todo à supprimer-->
+  <button (click)="getFormValue()">Form values</button>
+  <!---->
+
+
+  <button (click)="close()">Fermer</button>
 </section>
