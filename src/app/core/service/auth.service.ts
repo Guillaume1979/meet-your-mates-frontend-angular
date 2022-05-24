@@ -42,6 +42,10 @@ export class AuthService {
     this.oauthService.configure(authCodeFlowConfig);
     this.oauthService.tryLogin().then((r) => {
       this.setJwtToken();
+      /*const { value } = this.isAuthenticated;
+      if (!value) {
+        this.setJwtToken();
+      }*/
     });
     if (sessionStorage.getItem('mym_token')) {
       this.isAuthenticated.next(true);
@@ -80,7 +84,7 @@ export class AuthService {
   }
 
   private updateAuthenticationState(): void {
-    this.isAuthenticated.next(!!sessionStorage.getItem('mym_token'));
+    this.isAuthenticated.next(sessionStorage.getItem('mym_token') !== null);
   }
 
   private getUserInfoFromToken(): void {
