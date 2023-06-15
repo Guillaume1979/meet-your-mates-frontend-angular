@@ -14,20 +14,21 @@
 
     </thead>
     <tbody>
-    <tr *ngFor="let session of sessions | async">
+    <tr *ngFor="let session of sessions$ | async">
       <td>{{session.id}}</td>
       <td>{{session.date | date: 'dd/MM/yy'}}</td>
       <td>{{session.date | date: 'HH:mm'}}</td>
       <td>{{session.game.name}}</td>
-      <td><span *ngFor="let player of session.registeredPlayers">{{player.username}}</span></td>
-      <td><a [routerLink]="['/session', session.id]">Bouton</a></td>
+      <td><span *ngFor="let player of session.registeredPlayers">{{player.username}}<br></span></td>
+      <!--<td><a [routerLink]="['/session', session.id]">Bouton</a></td>-->
+      <td>
+        <button class="basic1" (click)="openModal(session)">Détail</button>
+      </td>
     </tr>
     </tbody>
   </table>
 
-  <br>
-  <br>
-  <br>
-  <br>
-  <p style="color: red"><strong>Prévoir l'ouverture du détail dans une popup</strong></p>
+  <dialog #sessionModal>
+    <app-session-edit [session]="editableSession" (closeModal)="closeModal()"></app-session-edit>
+  </dialog>
 </section>

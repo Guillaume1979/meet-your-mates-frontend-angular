@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Session } from '../../../core/model/session';
 import { SessionService } from '../../../core/service/session.service';
 import { Observable } from 'rxjs';
+import { PlayerService } from '../../../core/service/player.service';
 
 @Component({
   selector: 'app-session-list',
@@ -9,11 +10,25 @@ import { Observable } from 'rxjs';
   styleUrls: ['./session-list.component.scss'],
 })
 export class SessionListComponent implements OnInit {
-  sessions!: Observable<Session[]>;
+  sessions$!: Observable<Session[]>;
+  editableSession = new Session();
+  @ViewChild('sessionModal') sessionModal?: ElementRef;
 
-  constructor(private readonly sessionService: SessionService) {}
+  constructor(
+    private readonly sessionService: SessionService,
+    private readonly playerService: PlayerService
+  ) {}
 
   ngOnInit(): void {
-    this.sessions = this.sessionService.getSessions();
+    this.sessions$ = this.playerService.getSessions();
+  }
+
+  openModal(session: Session): void {
+    this.editableSession = session;
+    this.sessionModal?.nativeElement.showModal();
+  }
+
+  closeModal() {
+    this.sessionModal?.nativeElement.close();
   }
 }
